@@ -1,0 +1,502 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "category",
+				"type": "string"
+			},
+			{
+				"internalType": "enum TodoList.TodoPriority",
+				"name": "priority",
+				"type": "uint8"
+			}
+		],
+		"name": "addTodo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "id",
+						"type": "int256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "enum TodoList.TodoPriority",
+						"name": "priority",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "iscompleted",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct TodoList.Todo",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "int256",
+				"name": "id",
+				"type": "int256"
+			}
+		],
+		"name": "markCompleted",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "id",
+						"type": "int256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "enum TodoList.TodoPriority",
+						"name": "priority",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "iscompleted",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct TodoList.Todo",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "id",
+						"type": "int256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "enum TodoList.TodoPriority",
+						"name": "priority",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "iscompleted",
+						"type": "bool"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct TodoList.Todo",
+				"name": "todo",
+				"type": "tuple"
+			}
+		],
+		"name": "TaskCompleted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "id",
+						"type": "int256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "enum TodoList.TodoPriority",
+						"name": "priority",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "iscompleted",
+						"type": "bool"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct TodoList.Todo",
+				"name": "todo",
+				"type": "tuple"
+			}
+		],
+		"name": "TaskCreated",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "id",
+						"type": "int256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "enum TodoList.TodoPriority",
+						"name": "priority",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "iscompleted",
+						"type": "bool"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct TodoList.Todo",
+				"name": "todo",
+				"type": "tuple"
+			}
+		],
+		"name": "TaskUpdated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "int256",
+				"name": "id",
+				"type": "int256"
+			},
+			{
+				"internalType": "string",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "category",
+				"type": "string"
+			},
+			{
+				"internalType": "enum TodoList.TodoPriority",
+				"name": "priority",
+				"type": "uint8"
+			}
+		],
+		"name": "updateTodo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "id",
+						"type": "int256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "enum TodoList.TodoPriority",
+						"name": "priority",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "iscompleted",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct TodoList.Todo",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"name": "_todosIdsLookup",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "id",
+				"type": "int256"
+			},
+			{
+				"internalType": "string",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "category",
+				"type": "string"
+			},
+			{
+				"internalType": "enum TodoList.TodoPriority",
+				"name": "priority",
+				"type": "uint8"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "iscompleted",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "_userTodosLookup",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getMyTodos",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "id",
+						"type": "int256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "enum TodoList.TodoPriority",
+						"name": "priority",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "iscompleted",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct TodoList.Todo[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "int256",
+				"name": "id",
+				"type": "int256"
+			}
+		],
+		"name": "getTodo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "int256",
+						"name": "id",
+						"type": "int256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "category",
+						"type": "string"
+					},
+					{
+						"internalType": "enum TodoList.TodoPriority",
+						"name": "priority",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "iscompleted",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct TodoList.Todo",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
