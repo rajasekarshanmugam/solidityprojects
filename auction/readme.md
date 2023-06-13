@@ -1,20 +1,24 @@
-# TODO - web3 application to manage personal todos
+# Auction House - web3 application to manage auctions
 
 
 ## Architecture:
 
-We use a Vue based SPA to interact with the EVM directly(Ganache in our case).
+We use a Vue based SPA to interact with the EVM directly(Ganache in our case) using web3js.
 
 Once the SPA is "connected" to the client given the server url, we should be able to perform the options, switch accounts and visualize the results.
 
 ## Smart Contract:
 
-TODO smart contract is located in the folder "smartcontracts". Its provides the capabilities as below:
+Auction smart contract is located in the folder "smartcontracts". Its provides the following capabilities:
 
-* add task
-* update task - details
-* update task as completed
-* find todos for current user/account
+* manage auctions
+* manage "my" auctions
+* state diagram of the auction - states -
+	- Created - auction item is created, but cannot bid yet
+	- Started - auction is started by the seller, other users(not seller) can bid higher amounts
+	- Frozen - owner of the auction, accepted the amount and awaiting pay from highest bidder
+	- Closed - highest bidder does a buy out - transferring ether to the seller
+* auction items are categorized by the auction state
 
 ## Compiling and Running the application:
 
@@ -36,7 +40,6 @@ vite
 
 ## Walkthrough of the application:
 
-
 ![Screenshot](./snapshots/quickview.gif)
 
 
@@ -55,24 +58,5 @@ vite
 
 * Once we click on the "Connect" button, we should see the list of tasks. If there are no Todos, need to click on "+" to add new one as shown below.
 
-![Screenshot](./snapshots/3.png)
-
-* Click on update to save changed details back to the Todo
-
-![Screenshot](./snapshots/2.png)
-
-* Click on "Mark Done" to mark the task as completed
-
-![Screenshot](./snapshots/4.png)
-
-* Completed tasks are shown with a "Tick" mark where as a pending ones are shown with an hourglass
-
-![Screenshot](./snapshots/5.png)
-
-* change the "current account" from the account drop down. Usually it might be empty as not tasks are available for the new account
-
-![Screenshot](./snapshots/6.png)
-
-* Ganache snapshot showing multipe mined blocks
-
-![Screenshot](./snapshots/7.png)
+* Follow above walk through to completely view all the screens and the steps
+* note that the accounts drop down is used to switch as different users - sellers, buyers

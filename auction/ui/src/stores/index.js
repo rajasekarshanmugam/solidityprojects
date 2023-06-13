@@ -22,7 +22,7 @@ const useRootStore = defineStore('root', {
       accounts: null,
       currentAccount: null,
       defaultGas: 3000000,
-      contractAddress: "0x112f2565c673b4ea5E24ab989f704CAF0aa331a8",
+      contractAddress: "0xd6FB5e5c2092E01eE38Bf21beDe07069D88aC8a0",
       web3: null,
       connected: false,
       auctionContract: null,
