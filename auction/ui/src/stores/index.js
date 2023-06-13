@@ -70,7 +70,8 @@ const useRootStore = defineStore('root', {
     convertAuction(r) {
       const { id, itemName, itemUrl, itemDescription, minimumPriceWei, owner, state, winningBidPriceWei } = r;
       return {
-        id: Number(id), itemName, itemUrl, itemDescription, minimumPriceWei: Number(minimumPriceWei), owner, state: Number(state), winningBidPriceWei
+        id: Number(id), 
+        itemName, itemUrl, itemDescription, minimumPriceWei: Number(minimumPriceWei), owner, state: Number(state), winningBidPriceWei: Number(winningBidPriceWei)
       };
     },
 
@@ -113,6 +114,29 @@ const useRootStore = defineStore('root', {
       console.log('auctions...', result);
     },
 
+    async startBidding(id) {
+      console.log('startBidding...', id);
+      const result = await this.auctionContract.methods.startBidding(id).send(this.getCallInputs());
+      console.log('startBidding...', result);
+    },
+
+    async bid(id, price) {
+      console.log('bid...', id, price);
+      const result = await this.auctionContract.methods.bid(id, price).send(this.getCallInputs());
+      console.log('bid...', result);
+    },
+
+    async freezeBid(id) {
+      console.log('freezeBid...', id);
+      const result = await this.auctionContract.methods.freezeAuction(id).send(this.getCallInputs());
+      console.log('freezeBid...', result);
+    },
+
+    async buyOut(id) {
+      console.log('buyOut...', id);
+      const result = await this.auctionContract.methods.buyAndConfirmSale(id).send(this.getCallInputs());
+      console.log('buyOut...', result);
+    },
 
     toObject(o) {
       return JSON.parse(

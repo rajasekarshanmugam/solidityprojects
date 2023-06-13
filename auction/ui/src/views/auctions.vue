@@ -6,7 +6,6 @@ import auction from "@/components/auction.vue";
 import groupBy from "lodash/groupBy";
 
 const store = useRootStore();
-
 const groupedAuctions = ref({});
 
 const reload = async () => {
@@ -23,10 +22,6 @@ watch(connected, async (newValue) => {
   if (newValue) await reload();
 });
 
-const createDefaultAuctions = async () => {
-  await store.createDefaultAuctions();
-  await reload();
-};
 </script>
 <template>
   <div v-if="!store.web3" class="alert alert-danger" role="alert">
@@ -37,7 +32,7 @@ const createDefaultAuctions = async () => {
       <div class="row">
         <div class="col-12">
           <div class="my-2">
-            <span class="h2 pt-2">All Auctions</span>
+            <span class="h2 pt-2">All</span>
             <span class="float-end">
               <button
                 type="button"
@@ -52,13 +47,24 @@ const createDefaultAuctions = async () => {
           </div>
           <template v-for="(agroup, astate) in groupedAuctions">
             <div class="h3 text-italic">{{ AUCTIONSTATE[astate] }}</div>
-            <div class="row row-cols-lg-4 row-cols-sm-4 .row-cols-md-3">
+            <div id="vueinstance" class="container">
               <div
-                class="col"
-                v-for="(auction, auctionIndex) in agroup"
-                :key="auctionIndex + auction.id"
+                v-masonry="vueinstance"
+                transition-duration="0.3s"
+                item-selector=".item"
               >
-                <auction :auction="auction" />
+                <div class="row">
+                  <div
+                    v-masonry-tile
+                    class="item col-sm-3"
+                    v-for="(auction, auctionIndex) in agroup"
+                    :key="auctionIndex + auction.id"
+                  >
+                    <auction :auction="auction" />
+                    <br />
+                    &nbsp;
+                  </div>
+                </div>
               </div>
             </div>
           </template>

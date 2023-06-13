@@ -9,8 +9,15 @@ import router from '@/router';
 import "bootstrap/dist/js/bootstrap.js"
 import BootstrapIcon from '@dvuckovic/vue3-bootstrap-icons';
 
-createApp(App)
+import mitt from 'mitt'
+import { VueMasonryPlugin } from "vue-masonry/src/masonry.plugin";
+
+const app = createApp(App);
+app.config.globalProperties.emitter = mitt();
+
+app
 	.use(createPinia())
 	.use(router)
 	.component('BootstrapIcon', BootstrapIcon)
+	.use(VueMasonryPlugin)
 	.mount('#app')

@@ -44,7 +44,7 @@ const store = useRootStore();
               >
             </li>
           </ul>
-          
+
           <form class="d-flex">
             <input
               v-if="!store.web3"
@@ -96,7 +96,7 @@ const store = useRootStore();
         </div>
       </div>
     </nav>
-    <main role="main">
+    <main role="main" :key="store.currentAccount">
       <router-view />
     </main>
   </body>
