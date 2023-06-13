@@ -3,7 +3,7 @@
 
 ## Architecture:
 
-We use a Vue based SPA to interact with the EVM directly(Ganache in our case).
+We use a Vue based SPA to interact with the EVM directly(Ganache in our case) using web3js.
 
 Once the SPA is "connected" to the client given the server url, we should be able to perform the options, switch accounts and visualize the results.
 
