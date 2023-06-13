@@ -1,32 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import voting from '../views/voting.vue'
-import votingmonitor from '../views/votingmonitor.vue'
-import candidates from '../views/candidates.vue'
+import auctions from '../views/auctions.vue'
+import myauctions from '../views/myauctions.vue'
 
 const routes = [
 	{
 		path: '/',
-		redirect: { name: 'votingmonitor' },
+		redirect: { name: 'myauctions' },
 	},
 
 	{
-		path: '/votingmonitor',
-		name: 'votingmonitor',
-		component: votingmonitor,
+		path: '/myauctions',
+		name: 'myauctions',
+		component: myauctions,
 	},
-	
 	{
-		path: '/voting',
-		name: 'voting',
-		component: voting,
-	},
-
-
-	{
-		path: '/candidates',
-		name: 'candidates',
-		component: candidates,
+		path: '/auctions',
+		name: 'auctions',
+		component: auctions,
 	},
 ]
 

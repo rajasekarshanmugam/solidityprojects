@@ -7,7 +7,7 @@ const store = useRootStore();
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Voting Station</a>
+        <a class="navbar-brand" href="#">Auction House</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -26,20 +26,9 @@ const store = useRootStore();
                 tag="a"
                 class="nav-link"
                 active-class="active"
-                to="/voting"
+                to="/myauctions"
                 exact
-                >Voting</router-link
-              >
-            </li>
-          </ul>          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item">
-              <router-link
-                tag="a"
-                class="nav-link"
-                active-class="active"
-                to="/votingmonitor"
-                exact
-                >Voting Monitor</router-link
+                >My</router-link
               >
             </li>
           </ul>
@@ -49,12 +38,13 @@ const store = useRootStore();
                 tag="a"
                 class="nav-link"
                 active-class="active"
-                to="/candidates"
+                to="/auctions"
                 exact
-                >Candidates</router-link
+                >Auctions</router-link
               >
             </li>
           </ul>
+          
           <form class="d-flex">
             <input
               v-if="!store.web3"
@@ -73,7 +63,7 @@ const store = useRootStore();
             <select
               v-if="store.accounts"
               class="form-select me-2"
-              aria-label="Default select example"
+              aria-label="current account"
               v-model="store.currentAccount"
             >
               <option selected disabled>Pick Account</option>
@@ -83,7 +73,7 @@ const store = useRootStore();
               class="form-control me-2"
               type="search"
               placeholder="default gas"
-              style="max-width: 100px;"
+              style="max-width: 100px"
               v-model="store.defaultGas"
             />
             <button

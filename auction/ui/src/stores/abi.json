@@ -2,47 +2,67 @@
 	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "partyName",
-				"type": "string"
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
 			},
 			{
-				"internalType": "string",
-				"name": "partyFlagUrl",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "candidateAddress",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "bidAmount",
+				"type": "uint256"
 			}
 		],
-		"name": "addCandidate",
+		"name": "bid",
 		"outputs": [
 			{
 				"components": [
 					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
 						"internalType": "string",
-						"name": "partyname",
+						"name": "itemName",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "partyflagurl",
+						"name": "itemUrl",
 						"type": "string"
 					},
 					{
-						"internalType": "address",
-						"name": "candidateaddress",
+						"internalType": "string",
+						"name": "itemDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimumPriceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
 						"type": "address"
 					},
 					{
-						"internalType": "bool",
-						"name": "initialized",
-						"type": "bool"
+						"internalType": "enum AuctionHouse.AuctionState",
+						"name": "state",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "winningBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winningBidPriceWei",
+						"type": "uint256"
 					}
 				],
-				"internalType": "struct Voting.CandidateInfo",
+				"internalType": "struct AuctionHouse.Auction",
 				"name": "",
 				"type": "tuple"
 			}
@@ -51,10 +71,300 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "declareVotingResults",
-		"outputs": [],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "buyAndConfirmSale",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "itemName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "itemUrl",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "itemDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimumPriceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "enum AuctionHouse.AuctionState",
+						"name": "state",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "winningBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winningBidPriceWei",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct AuctionHouse.Auction",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "itemName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "itemUrl",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "itemDescription",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "minimumPriceWei",
+				"type": "uint256"
+			}
+		],
+		"name": "createAuction",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "itemName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "itemUrl",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "itemDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimumPriceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "enum AuctionHouse.AuctionState",
+						"name": "state",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "winningBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winningBidPriceWei",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct AuctionHouse.Auction",
+				"name": "",
+				"type": "tuple"
+			}
+		],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "freezeAuction",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "itemName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "itemUrl",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "itemDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimumPriceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "enum AuctionHouse.AuctionState",
+						"name": "state",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "winningBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winningBidPriceWei",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct AuctionHouse.Auction",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "startBidding",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "itemName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "itemUrl",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "itemDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimumPriceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "enum AuctionHouse.AuctionState",
+						"name": "state",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "winningBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winningBidPriceWei",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct AuctionHouse.Auction",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -63,250 +373,158 @@
 		"type": "constructor"
 	},
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "sender",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
 			},
-			{
-				"components": [
-					{
-						"internalType": "string",
-						"name": "partyname",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "partyflagurl",
-						"type": "string"
-					},
-					{
-						"internalType": "address",
-						"name": "candidateaddress",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "initialized",
-						"type": "bool"
-					}
-				],
-				"indexed": false,
-				"internalType": "struct Voting.CandidateInfo",
-				"name": "candidate",
-				"type": "tuple"
-			}
-		],
-		"name": "OnNewCandidate",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "sender",
-				"type": "address"
-			},
-			{
-				"components": [
-					{
-						"internalType": "string",
-						"name": "partyname",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "partyflagurl",
-						"type": "string"
-					},
-					{
-						"internalType": "address",
-						"name": "candidateaddress",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "initialized",
-						"type": "bool"
-					}
-				],
-				"indexed": false,
-				"internalType": "struct Voting.CandidateInfo",
-				"name": "candidate",
-				"type": "tuple"
-			}
-		],
-		"name": "OnVote",
-		"type": "event"
-	},
-	{
-		"inputs": [],
-		"name": "resetState",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "startVoting",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "sender",
-				"type": "address"
-			}
-		],
-		"name": "StartVoting",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "candidateAddress",
-				"type": "address"
-			}
-		],
-		"name": "vote",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "_admin",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "_votingState",
-		"outputs": [
-			{
-				"internalType": "enum Voting.VotingState",
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "_winner",
-		"outputs": [
 			{
 				"internalType": "string",
-				"name": "partyname",
+				"name": "itemName",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "partyflagurl",
+				"name": "itemUrl",
 				"type": "string"
 			},
 			{
-				"internalType": "address",
-				"name": "candidateaddress",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "initialized",
-				"type": "bool"
+				"internalType": "uint256",
+				"name": "minimumPriceWei",
+				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getCandidates",
+		"name": "updateAuction",
 		"outputs": [
 			{
 				"components": [
 					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
 						"internalType": "string",
-						"name": "partyname",
+						"name": "itemName",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "partyflagurl",
+						"name": "itemUrl",
 						"type": "string"
 					},
 					{
-						"internalType": "address",
-						"name": "candidateaddress",
+						"internalType": "string",
+						"name": "itemDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimumPriceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
 						"type": "address"
 					},
 					{
-						"internalType": "bool",
-						"name": "initialized",
-						"type": "bool"
+						"internalType": "enum AuctionHouse.AuctionState",
+						"name": "state",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "winningBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winningBidPriceWei",
+						"type": "uint256"
 					}
 				],
-				"internalType": "struct Voting.CandidateInfo[]",
+				"internalType": "struct AuctionHouse.Auction",
 				"name": "",
-				"type": "tuple[]"
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "balance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "getMyVote",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "getAuction",
 		"outputs": [
 			{
 				"components": [
 					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
 						"internalType": "string",
-						"name": "partyname",
+						"name": "itemName",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "partyflagurl",
+						"name": "itemUrl",
 						"type": "string"
 					},
 					{
-						"internalType": "address",
-						"name": "candidateaddress",
+						"internalType": "string",
+						"name": "itemDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimumPriceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
 						"type": "address"
 					},
 					{
-						"internalType": "bool",
-						"name": "initialized",
-						"type": "bool"
+						"internalType": "enum AuctionHouse.AuctionState",
+						"name": "state",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "winningBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winningBidPriceWei",
+						"type": "uint256"
 					}
 				],
-				"internalType": "struct Voting.CandidateInfo",
+				"internalType": "struct AuctionHouse.Auction",
 				"name": "",
 				"type": "tuple"
 			}
@@ -316,114 +534,59 @@
 	},
 	{
 		"inputs": [],
-		"name": "getVoteCountsByCandidate",
+		"name": "getAuctions",
 		"outputs": [
 			{
 				"components": [
 					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
 						"internalType": "string",
-						"name": "partyname",
+						"name": "itemName",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "partyflagurl",
+						"name": "itemUrl",
 						"type": "string"
 					},
 					{
-						"internalType": "address",
-						"name": "candidateaddress",
+						"internalType": "string",
+						"name": "itemDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimumPriceWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "owner",
 						"type": "address"
 					},
 					{
-						"internalType": "bool",
-						"name": "initialized",
-						"type": "bool"
+						"internalType": "enum AuctionHouse.AuctionState",
+						"name": "state",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "winningBidder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winningBidPriceWei",
+						"type": "uint256"
 					}
 				],
-				"internalType": "struct Voting.CandidateInfo[]",
+				"internalType": "struct AuctionHouse.Auction[]",
 				"name": "",
 				"type": "tuple[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getVotingResults",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "string",
-						"name": "partyname",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "partyflagurl",
-						"type": "string"
-					},
-					{
-						"internalType": "address",
-						"name": "candidateaddress",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "initialized",
-						"type": "bool"
-					}
-				],
-				"internalType": "struct Voting.CandidateInfo[]",
-				"name": "",
-				"type": "tuple[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getWinner",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "string",
-						"name": "partyname",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "partyflagurl",
-						"type": "string"
-					},
-					{
-						"internalType": "address",
-						"name": "candidateaddress",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "initialized",
-						"type": "bool"
-					}
-				],
-				"internalType": "struct Voting.CandidateInfo",
-				"name": "",
-				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",
