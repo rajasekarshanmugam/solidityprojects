@@ -88,7 +88,7 @@ const store = useRootStore();
             />
             <button
               v-if="!store.web3"
-              class="btn btn-outline-success"
+              class="btn btn-success"
               type="button"
               @click="store.connectAsync()"
             >
@@ -96,7 +96,7 @@ const store = useRootStore();
             </button>
             <button
               v-else
-              class="btn btn-outline-success"
+              class="btn btn-danger"
               type="button"
               @click="store.disconnectAsync()"
             >

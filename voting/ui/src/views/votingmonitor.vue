@@ -19,6 +19,15 @@ const { connected } = storeToRefs(store);
 watch(connected, async (newValue) => {
   if (newValue) await reload();
 });
+
+const declareWinner = async () => {
+  await store.declareVotingResults();
+  await reload();
+};
+const resetAll = async () => {
+  await store.resetAll();
+  await reload();
+};
 </script>
 <template>
   <div v-if="!store.web3" class="alert alert-danger" role="alert">
@@ -31,13 +40,11 @@ watch(connected, async (newValue) => {
           <div class="my-2">
             <div class="my-3">
               <span class="h2">Voting Status</span>
-              <button
-                type="button"
-                class="btn btn-small btn-success float-end"
-                @click="reload"
-              >
-                <BootstrapIcon icon="arrow-clockwise" />
-              </button>
+              <div class="float-end">
+                <button type="button" class="btn btn-small btn-success me-2" @click="reload">
+                  <BootstrapIcon icon="arrow-clockwise" />
+                </button>
+              </div>
             </div>
             <template v-if="store.votingState == 0">
               <div class="alert alert-primary" role="alert" style="height: 75px">
@@ -57,7 +64,7 @@ watch(connected, async (newValue) => {
                 <button
                   type="button"
                   class="btn btn-primary float-end"
-                  @click="store.declareVotingResults"
+                  @click="declareWinner"
                 >
                   Click here to stop voting and declare winner
                 </button>
@@ -81,7 +88,7 @@ watch(connected, async (newValue) => {
         <div class="col-12">
           <div class="my-2">
             <div class="my-3">
-              <span class="h2">Leadership Board</span>
+              <span class="h2">Leading Candidates</span>
               <button
                 type="button"
                 class="btn btn-small btn-success float-end"
@@ -95,7 +102,7 @@ watch(connected, async (newValue) => {
                 <div
                   class="col"
                   v-for="(candidate, candidateIndex) in store.votingResults"
-                  :key="candidateIndex"
+                  :key="candidateIndex + candidate.partyname"
                 >
                   <candidate :candidate="candidate">
                     <template #body>

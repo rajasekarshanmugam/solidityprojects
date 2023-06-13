@@ -45,7 +45,6 @@ watch(connected, async (newValue) => {
                   @click="castVote(votedAddress)"
                 >
                   <BootstrapIcon icon="arrow-right" /> Cast Vote
-                  <BootstrapIcon icon="arrow-left" />
                 </button>
 
                 <button type="button" class="btn btn-success ms-2" @click="reload">
@@ -68,7 +67,7 @@ watch(connected, async (newValue) => {
                 <div
                   class="col"
                   v-for="(candidate, candidateIndex) in store.candidates"
-                  :key="candidateIndex"
+                  :key="candidateIndex+candidate.partyname"
                 >
                   <candidate :candidate="candidate">
                     <template #postfooter>

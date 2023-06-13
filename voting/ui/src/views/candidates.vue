@@ -42,6 +42,15 @@ watch(connected, async (newValue) => {
               >
                 <BootstrapIcon icon="arrow-clockwise" />
               </button>
+
+              <button
+                type="button"
+                class="btn btn-success ms-2"
+                @click="store.addSomeCandidates()"
+                title="add some sample candidates"
+              >
+                <BootstrapIcon icon="plus" />
+              </button>
             </span>
           </div>
           <div class="row row-cols-lg-4 row-cols-sm-4 .row-cols-md-3">
@@ -98,7 +107,7 @@ watch(connected, async (newValue) => {
             <div
               class="col"
               v-for="(candidate, candidateIndex) in store.candidates"
-              :key="candidateIndex"
+              :key="candidateIndex+candidate.partyname"
             >
               <candidate :candidate="candidate" />
             </div>

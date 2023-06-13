@@ -16,7 +16,7 @@ const useRootStore = defineStore('root', {
       accounts: null,
       currentAccount: null,
       defaultGas: 307000,
-      contractAddress: "0x7aa2348896d6d6E54923c727d26cfffB903897Bc",
+      contractAddress: "0xb47A9FFcFa422c05Abf28B68249A2D5A3E0B1fF7",
       web3: null,
       connected: false,
       votingContract: null,
@@ -99,6 +99,13 @@ const useRootStore = defineStore('root', {
       }
 
       await this.loadCandidates();
+    },
+
+    async addSomeCandidates(){
+      const accounts = this.accounts;
+      await this.addNewCandidate("BJP", "https://www.flagcolorcodes.com/data/Flag-of-Bharatiya-Janata-Party.png", accounts[0]);
+      await this.addNewCandidate("Congress", "https://www.flagcolorcodes.com/data/Flag-of-Indian-National-Congress.png", accounts[1]);
+      await this.addNewCandidate("Trinamool Congress", "https://www.flagcolorcodes.com/data/Flag-of-All-India-Trinamool-Congress.png", accounts[2]);
     },
 
     async startVoting() {

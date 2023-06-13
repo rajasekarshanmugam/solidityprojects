@@ -16,17 +16,17 @@ contract Voting {
     }
 
     CandidateInfo[] _candidates;
-    mapping(address => address[]) _votes;
-    mapping(address => CandidateInfo) _votesFor;
-    VotingState public _votingState;
-    CandidateInfo public _winner;
+    mapping(address => address[]) _votes; // votes for a candidate
+    mapping(address => CandidateInfo) _votesFor; // list of candidates
+    VotingState public _votingState; // current voting state
+    CandidateInfo public _winner; // winner of the poll
 
     // fix the user who can onboard other candidates
     address public _admin;
 
     constructor() {
         _admin = msg.sender;
-        resetState();
+        initState();
     }
 
     // state functions
@@ -52,25 +52,8 @@ contract Voting {
         return (candidates, votes);
     }
 
-    function resetState() public {
+    function initState() public {
         _votingState = VotingState.Onboarding;
-
-        // add two test candidates
-        addCandidate(
-            "BJP",
-            "https://www.flagcolorcodes.com/data/Flag-of-Bharatiya-Janata-Party.png",
-            0xC69DA2E23f5b7fE69CfBA0E31977064Cf66761a2
-        );
-        addCandidate(
-            "Congress",
-            "https://www.flagcolorcodes.com/data/Flag-of-Indian-National-Congress.png",
-            0x28F6AE3B7A8C1E7E143456f14f8d98885a53fd8F
-        );
-        addCandidate(
-            "Trinamool Congress",
-            "https://www.flagcolorcodes.com/data/Flag-of-All-India-Trinamool-Congress.png",
-            0x0a5d46e40A9fD2c5134Dc2aC7C9990d61B6443e3
-        );
     }
 
     event OnNewCandidate(address indexed sender, CandidateInfo candidate);
