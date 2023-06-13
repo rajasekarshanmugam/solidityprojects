@@ -60,7 +60,7 @@ watch(connected, async (newValue) => {
                     v-for="(auction, auctionIndex) in agroup"
                     :key="auctionIndex + auction.id"
                   >
-                    <auction :auction="auction" />
+                    <auction :auction="auction" @auctionUpdated="reload" />
                     <br />
                     &nbsp;
                   </div>

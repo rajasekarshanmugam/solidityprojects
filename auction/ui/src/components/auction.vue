@@ -9,6 +9,9 @@ const props = defineProps({
     required: true,
   },
 });
+
+const emit = defineEmits("auctionUpdated")
+
 const auction = ref(props.auction);
 const bidAmount = ref(auction.value.winningBidPriceWei);
 const minBidAmount = ref(auction.value.winningBidPriceWei);
@@ -16,21 +19,25 @@ console.log("auction", auction.value);
 
 const startBidding = async () => {
   await store.startBidding(auction.value.id);
+  emit("auctionUpdated");
   alert("bidding started for the item successfully");
 };
 
 const bid = async () => {
   await store.bid(auction.value.id, bidAmount.value);
+  emit("auctionUpdated");
   alert("bid for specified price successfully");
 };
 
 const freezeBid = async () => {
   await store.freezeBid(auction.value.id);
+  emit("auctionUpdated");
   alert("bidding frozen for the item successfully");
 };
 
 const buyOut = async () => {
   await store.buyOut(auction.value.id);
+  emit("auctionUpdated");
   alert("item bought out successfully");
 };
 </script>
@@ -91,7 +98,7 @@ const buyOut = async () => {
         </div>
 
         <!-- FROZEN -->
-        <div v-else-if="auction.state == 2 && auction.owner == store.currentAccount">
+        <div v-else-if="auction.state == 2 && auction.winningBidder == store.currentAccount">
           <div class="input-group">
             <input
               type="number"
@@ -102,6 +109,13 @@ const buyOut = async () => {
             />
             <button type="button" class="btn btn-success" @click="buyOut">Buy Out</button>
           </div>
+        </div>
+
+        <!-- CLOSED -->
+        <div v-else-if="auction.state == 3 && auction.winningBidder == store.currentAccount">
+          <span class="text-italic text-small text-muted">
+            {{ AUCTIONSTATE[auction.state] }} - SUCCESSFULLY BOUGHT
+          </span>
         </div>
 
         <div v-else>

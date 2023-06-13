@@ -32,18 +32,18 @@ contract AuctionHouse {
         _houseAddress = msg.sender;
 
         // create sample data
-        createAuction(
-            "watch",
-            "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus gravida purus sed sodales convallis. Aliquam a nisl ante. Quisque nisi erat, feugiat ac viverra sed, volutpat eget ante. Integer sit amet elit libero. Donec eleifend nec nibh a varius. Proin et erat mollis urna maximus ultrices. Vestibulum ac arcu nec turpis pellentesque pellentesque vitae vel dolor. Sed suscipit leo ipsum, eu dapibus diam imperdiet ut",
-            1000
-        );
-        createAuction(
-            "item1",
-            "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus gravida purus sed sodales convallis. Aliquam a nisl ante. Quisque nisi erat, feugiat ac viverra sed, volutpat eget ante. Integer sit amet elit libero. Donec eleifend nec nibh a varius. Proin et erat mollis urna maximus ultrices. Vestibulum ac arcu nec turpis pellentesque pellentesque vitae vel dolor. Sed suscipit leo ipsum, eu dapibus diam imperdiet ut",
-            2000
-        );
+        // createAuction(
+        //     "watch",
+        //     "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus gravida purus sed sodales convallis. Aliquam a nisl ante. Quisque nisi erat, feugiat ac viverra sed, volutpat eget ante. Integer sit amet elit libero. Donec eleifend nec nibh a varius. Proin et erat mollis urna maximus ultrices. Vestibulum ac arcu nec turpis pellentesque pellentesque vitae vel dolor. Sed suscipit leo ipsum, eu dapibus diam imperdiet ut",
+        //     1000
+        // );
+        // createAuction(
+        //     "item1",
+        //     "https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus gravida purus sed sodales convallis. Aliquam a nisl ante. Quisque nisi erat, feugiat ac viverra sed, volutpat eget ante. Integer sit amet elit libero. Donec eleifend nec nibh a varius. Proin et erat mollis urna maximus ultrices. Vestibulum ac arcu nec turpis pellentesque pellentesque vitae vel dolor. Sed suscipit leo ipsum, eu dapibus diam imperdiet ut",
+        //     2000
+        // );
     }
 
     function createAuction(
@@ -197,8 +197,8 @@ contract AuctionHouse {
             "can buy and  auction only after auction has been frozen"
         );
 
-        bool sent = a.owner.send(a.winningBidPriceWei);
-        require(sent, "Failed to send ether to the owner, aborting buy");
+        //bool sent = a.owner.send(a.winningBidPriceWei);
+        //require(sent, "Failed to send ether to the owner, aborting buy");
 
         a.state = AuctionState.Closed;
         return a;

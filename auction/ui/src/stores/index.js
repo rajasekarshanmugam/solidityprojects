@@ -22,7 +22,7 @@ const useRootStore = defineStore('root', {
       accounts: null,
       currentAccount: null,
       defaultGas: 3000000,
-      contractAddress: "0x465B20270407E7a6FF61EcCa7d8f9E4aa2CF1ebB",
+      contractAddress: "0x112f2565c673b4ea5E24ab989f704CAF0aa331a8",
       web3: null,
       connected: false,
       auctionContract: null,
@@ -68,10 +68,14 @@ const useRootStore = defineStore('root', {
     },
 
     convertAuction(r) {
-      const { id, itemName, itemUrl, itemDescription, minimumPriceWei, owner, state, winningBidPriceWei } = r;
+      const { id, itemName, itemUrl, itemDescription, minimumPriceWei, owner, state, winningBidder, winningBidPriceWei } = r;
       return {
         id: Number(id), 
-        itemName, itemUrl, itemDescription, minimumPriceWei: Number(minimumPriceWei), owner, state: Number(state), winningBidPriceWei: Number(winningBidPriceWei)
+        itemName, itemUrl, itemDescription, 
+          minimumPriceWei: Number(minimumPriceWei), 
+          owner, winningBidder,
+          state: Number(state),
+          winningBidPriceWei: Number(winningBidPriceWei)
       };
     },
 
